@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'iceCreamParty';
+    src: url('./fonts/icecreampartysolid-webfont.woff2') format('woff2'),
+         url('./fonts/icecreampartysolid-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html {
+    font-size: 16px;
+    background: url(./img/background.png) no-repeat fixed;
+    background-size: cover;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    font-family: "iceCreamParty", monospace;
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0.12rem 0.2rem 0 black,
+                 -0.1rem -0.14rem 0 black,
+                 -0.1rem 0.2rem 0 black,
+                 0.12rem -0.14rem 0 black;
+    
+}
