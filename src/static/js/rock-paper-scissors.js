@@ -12,13 +12,6 @@ function computerPlay() {
     }
 }
 
-function capitalize(string) {
-    string = string.toLowerCase();
-    let firstChar = string.charAt(0);
-    string = string.replace(firstChar, firstChar.toUpperCase());
-    return string;
-}
-
 function playRound(playerSelection, computerSelection) {
     playerSelection = capitalize(playerSelection)
     
