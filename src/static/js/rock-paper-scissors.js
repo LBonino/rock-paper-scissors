@@ -2,11 +2,11 @@ function computerPlay() {
     let randomNumber = Math.floor(Math.random() * 3);
     switch (randomNumber) {
         case 0:
-            return "Rock";
+            return "Quartz";
         case 1:
-            return "Paper";
+            return "Parchment";
         case 2:
-            return "Scissors";
+            return "Shears";
         default:
             throw "Value does not represent a valid play";
     }
@@ -24,11 +24,11 @@ function playRound(playerSelection, computerSelection) {
     
     let playerResult;
     switch (true) {
-        case !(["Rock", "Paper", "Scissors"].includes(playerSelection)):
+        case !(["Quartz", "Parchment", "Shears"].includes(playerSelection)):
             throw "Player move is not valid";
-        case playerSelection == "Rock" && computerSelection == "Scissors":
-        case playerSelection == "Scissors" && computerSelection == "Paper":
-        case playerSelection == "Paper" && computerSelection == "Rock":
+        case playerSelection == "Quartz" && computerSelection == "Shears":
+        case playerSelection == "Shears" && computerSelection == "Parchment":
+        case playerSelection == "Parchment" && computerSelection == "Quartz":
             playerResult = "win";
             break;
         case playerSelection == computerSelection:
@@ -56,7 +56,7 @@ function game() {
     let computerWins = 0;
 
     while (playerWins != 5 && computerWins != 5) {
-        const playerSelection = prompt("Make your move by entering one of the words: Rock - Paper - Scissors");
+        const playerSelection = prompt("Make your move by entering one of the words: Quartz - Parchment - Shears");
         const computerSelection = computerPlay();
         let result = playRound(playerSelection, computerSelection);
         console.log(result);
