@@ -12,10 +12,34 @@ function computerPlay() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = capitalize(playerSelection)
+function showSelections(playerResult, playerSelection, computerSelection) {
+    const playedMoves = document.createElement("div");
+    playedMoves.id = "played-moves";
+
+    const playerParagraph = document.createElement("p");
+    playerParagraph.textContent = `Player chooses ${playerSelection}!`;
+
+    const computerParagraph = document.createElement("p");
+    computerParagraph.textContent = `Computer chooses ${computerSelection}!`;
+
+    playedMoves.appendChild(playerParagraph);
+    playedMoves.appendChild(computerParagraph);
     
+    const main = document.querySelector("main");
+    const previousPlayedMoves = document.querySelector("#played-moves");
+    if (previousPlayedMoves) {
+        main.replaceChild(playedMoves, previousPlayedMoves);
+    }
+    else {
+        main.appendChild(playedMoves);
+    }
+}
+
+function playRound() {
+    const playerSelection = this.value;
+    const computerSelection = computerPlay();
     let playerResult;
+
     switch (true) {
         case !(["Quartz", "Parchment", "Shears"].includes(playerSelection)):
             throw "Player move is not valid";
@@ -31,18 +55,29 @@ function playRound(playerSelection, computerSelection) {
             playerResult = "defeat";
     }
 
+    showSelections(playerResult, playerSelection, computerSelection);
+
     switch (playerResult) {
         case "win":
-            return `You win! ${playerSelection} beats ${computerSelection}`;
+            console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+            break;
         case "defeat":
-            return `You lose! ${computerSelection} beats ${playerSelection}`;
+            console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+            break;
         case "draw":
-            return `It's a draw!`;
+            console.log(`It's a draw!`);
+            break;
         default:
             throw "The round could not be played, something went wrong";
     }
 }
 
+const moveButtons = document.querySelectorAll(".move-option");
+moveButtons.forEach(move => {
+    move.addEventListener("click", playRound);
+});
+
+/*
 function game() {
     const roundNumber = 5;
     let playerWins = 0;
@@ -74,3 +109,4 @@ function game() {
         
     }
 }
+*/
