@@ -55,13 +55,13 @@ main {
 }
 
 .move-div:hover {
-    transform: scale(1.15);
+    transform: scale(1.06);
     box-shadow: -1px 1px 10px black;
     cursor: pointer;
 }
 
 .move-div:active {
-    transform: scale(1.1);
+    transform: scale(1.02);
     background-color: whitesmoke;
 }
 
@@ -115,4 +115,12 @@ h3 {
 p {
     font-size: 2rem;
     margin: 0;
+}
+
+#played-moves {
+    display: flex;
+}
+
+#played-moves > p {
+    margin: 1rem 2rem;
 }
