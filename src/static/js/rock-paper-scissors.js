@@ -70,23 +70,9 @@ function showRoundInfo(playerResult, playerSelection, computerSelection) {
 function playRound() {
     const playerSelection = this.value;
     const computerSelection = computerPlay();
-    let playerResult = getPlayerResult(playerSelection, computerSelection);
+    const playerResult = getPlayerResult(playerSelection, computerSelection);
 
     showRoundInfo(playerResult, playerSelection, computerSelection);
-
-    switch (playerResult) {
-        case "win":
-            console.log(`You win! ${playerSelection} beats ${computerSelection}`);
-            break;
-        case "defeat":
-            console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
-            break;
-        case "draw":
-            console.log(`It's a draw!`);
-            break;
-        default:
-            throw "The round could not be played, something went wrong";
-    }
 }
 
 const moveButtons = document.querySelectorAll(".move-option");
