@@ -12,6 +12,21 @@ function computerPlay() {
     }
 }
 
+function getPlayerResult(playerSelection, computerSelection) {
+    switch (true) {
+        case !(["Quartz", "Parchment", "Shears"].includes(playerSelection)):
+            throw "Player move is not valid";
+        case playerSelection == "Quartz" && computerSelection == "Shears":
+        case playerSelection == "Shears" && computerSelection == "Parchment":
+        case playerSelection == "Parchment" && computerSelection == "Quartz":
+            return "win";
+        case playerSelection == computerSelection:
+            return "draw";
+        default:
+            return "defeat";
+    }
+}
+
 function showSelections(playerResult, playerSelection, computerSelection) {
     const playedMoves = document.createElement("div");
     playedMoves.id = "played-moves";
@@ -38,22 +53,7 @@ function showSelections(playerResult, playerSelection, computerSelection) {
 function playRound() {
     const playerSelection = this.value;
     const computerSelection = computerPlay();
-    let playerResult;
-
-    switch (true) {
-        case !(["Quartz", "Parchment", "Shears"].includes(playerSelection)):
-            throw "Player move is not valid";
-        case playerSelection == "Quartz" && computerSelection == "Shears":
-        case playerSelection == "Shears" && computerSelection == "Parchment":
-        case playerSelection == "Parchment" && computerSelection == "Quartz":
-            playerResult = "win";
-            break;
-        case playerSelection == computerSelection:
-            playerResult = "draw";
-            break;
-        default:
-            playerResult = "defeat";
-    }
+    let playerResult = getPlayerResult(playerSelection, computerSelection);
 
     showSelections(playerResult, playerSelection, computerSelection);
 
