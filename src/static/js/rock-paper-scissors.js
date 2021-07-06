@@ -91,6 +91,25 @@ function getScoreboardState() {
     return scoreboardState;
 }
 
+function declareWinner(scoreboardState) {
+    let winner;
+    switch (true) {
+        case scoreboardState.playerScore == 5:
+            winner = "Player";
+            break;
+        case scoreboardState.computerScore == 5:
+            winner = "Computer";
+            break;
+        default:
+            return;
+    }
+
+    const winnerDeclaration = document.createElement("p");
+    winnerDeclaration.textContent = `${winner} wins the game! Press F5 to play again`
+    const main = document.querySelector("main");
+    main.appendChild(winnerDeclaration);
+}
+
 function playRound() {
     const playerSelection = this.value;
     const computerSelection = computerPlay();
@@ -98,6 +117,11 @@ function playRound() {
 
     showRoundInfo(playerResult, playerSelection, computerSelection);
     updateScoreboard(playerResult);
+
+    const scoreboardState = getScoreboardState();
+    if (scoreboardState.playerScore == 5 || scoreboardState.computerScore == 5) {
+        declareWinner(scoreboardState);
+    }
 }
 
 const moveButtons = document.querySelectorAll(".move-option");
