@@ -67,12 +67,26 @@ function showRoundInfo(playerResult, playerSelection, computerSelection) {
 
 }
 
+function updateScoreboard(playerResult) {
+    switch (playerResult) {
+        case "win":
+            const playerScore = document.querySelector("#player-score");
+            playerScore.textContent = Number(playerScore.textContent) + 1;
+            break;
+        case "defeat":
+            const computerScore = document.querySelector("#computer-score");
+            computerScore.textContent = Number(computerScore.textContent) + 1;
+            break;
+    }
+}
+
 function playRound() {
     const playerSelection = this.value;
     const computerSelection = computerPlay();
     const playerResult = getPlayerResult(playerSelection, computerSelection);
 
     showRoundInfo(playerResult, playerSelection, computerSelection);
+    updateScoreboard(playerResult);
 }
 
 const moveButtons = document.querySelectorAll(".move-option");
