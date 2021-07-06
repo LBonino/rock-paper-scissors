@@ -136,37 +136,3 @@ const moveButtons = document.querySelectorAll(".move-option");
 moveButtons.forEach(move => {
     move.addEventListener("click", playRound);
 });
-
-/*
-function game() {
-    const roundNumber = 5;
-    let playerWins = 0;
-    let computerWins = 0;
-
-    while (playerWins != 5 && computerWins != 5) {
-        const playerSelection = prompt("Make your move by entering one of the words: Quartz - Parchment - Shears");
-        const computerSelection = computerPlay();
-        let result = playRound(playerSelection, computerSelection);
-        console.log(result);
-
-        switch (true) {
-            case result.includes("win"):
-                playerWins++;
-                break;
-            case result.includes("lose"):
-                computerWins++;
-                break;
-        }
-
-        console.log(`Player: ${playerWins} - Computer: ${computerWins}`);
-    }
-    
-    switch (true) {
-        case (playerWins > computerWins):
-            return "Player wins the game!";
-        case (computerWins > playerWins):
-            return "Computer wins the game!";
-        
-    }
-}
-*/
