@@ -27,7 +27,7 @@ function getPlayerResult(playerSelection, computerSelection) {
     }
 }
 
-function showSelections(playerResult, playerSelection, computerSelection) {
+function showRoundInfo(playerResult, playerSelection, computerSelection) {
     const playedMoves = document.createElement("div");
     playedMoves.id = "played-moves";
 
@@ -40,14 +40,31 @@ function showSelections(playerResult, playerSelection, computerSelection) {
     playedMoves.appendChild(playerParagraph);
     playedMoves.appendChild(computerParagraph);
     
+    const roundResult = document.createElement("p");
+    roundResult.id = "round-result";
+    switch (true) {
+        case (playerResult === "win"):
+            roundResult.textContent = "Player wins this round";
+            break;
+        case (playerResult === "defeat"):
+            roundResult.textContent = "Computer wins this round";
+            break;
+        default:
+            roundResult.textContent = "It is a tie";
+    }
+
     const main = document.querySelector("main");
     const previousPlayedMoves = document.querySelector("#played-moves");
+    const previousRoundResult = document.querySelector("#round-result");
     if (previousPlayedMoves) {
         main.replaceChild(playedMoves, previousPlayedMoves);
+        main.replaceChild(roundResult, previousRoundResult);
     }
     else {
         main.appendChild(playedMoves);
+        main.appendChild(roundResult);
     }
+
 }
 
 function playRound() {
@@ -55,7 +72,7 @@ function playRound() {
     const computerSelection = computerPlay();
     let playerResult = getPlayerResult(playerSelection, computerSelection);
 
-    showSelections(playerResult, playerSelection, computerSelection);
+    showRoundInfo(playerResult, playerSelection, computerSelection);
 
     switch (playerResult) {
         case "win":
