@@ -80,6 +80,17 @@ function updateScoreboard(playerResult) {
     }
 }
 
+function getScoreboardState() {
+    const playerScore = Number(document.querySelector("#player-score").textContent);
+    const computerScore = Number(document.querySelector("#computer-score").textContent);
+    const scoreboardState = {
+        playerScore: playerScore,
+        computerScore: computerScore
+    };
+
+    return scoreboardState;
+}
+
 function playRound() {
     const playerSelection = this.value;
     const computerSelection = computerPlay();
