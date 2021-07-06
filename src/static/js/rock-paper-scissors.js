@@ -110,6 +110,13 @@ function declareWinner(scoreboardState) {
     main.appendChild(winnerDeclaration);
 }
 
+function disableMoveButtons() {
+    const moveButtons = document.querySelectorAll(".move-option");
+    moveButtons.forEach(move => {
+        move.disabled = true;
+    });
+}
+
 function playRound() {
     const playerSelection = this.value;
     const computerSelection = computerPlay();
@@ -121,6 +128,7 @@ function playRound() {
     const scoreboardState = getScoreboardState();
     if (scoreboardState.playerScore == 5 || scoreboardState.computerScore == 5) {
         declareWinner(scoreboardState);
+        disableMoveButtons();
     }
 }
 
