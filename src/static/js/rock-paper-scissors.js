@@ -106,8 +106,10 @@ function declareWinner(scoreboardState) {
 
     const winnerDeclaration = document.createElement("p");
     winnerDeclaration.textContent = `${winner} wins the game! Press F5 to play again`
+
+    const previousRoundResult = document.querySelector("#round-result");
     const main = document.querySelector("main");
-    main.appendChild(winnerDeclaration);
+    main.replaceChild(winnerDeclaration, previousRoundResult);
 }
 
 function disableMoveButtons() {
